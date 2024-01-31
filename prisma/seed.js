@@ -6,6 +6,10 @@ const { faker } = require('@faker-js/faker');
 async function seed() {
   const users = []
 
+	// add one admin
+	const user = await createUser("sudoUdo", "sudo", "ADMIN")
+	users.push(user)
+	
   while (users.length < 10) {
     const user = await createUser(faker.internet.userName(), '123456789')
     users.push(user)
