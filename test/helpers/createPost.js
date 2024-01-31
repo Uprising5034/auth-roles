@@ -1,5 +1,5 @@
-const prisma = require("../../src/utils/prisma")
-const bcrypt = require('bcrypt');
+const prisma = require("../../src/utils/prisma");
+const bcrypt = require("bcrypt");
 
 const createPost = async (title, userId) => {
   return await prisma.post.create({
@@ -7,13 +7,13 @@ const createPost = async (title, userId) => {
       title,
       user: {
         connect: {
-            id: userId
-        }
-      }
+          id: userId,
+        },
+      },
     },
-  })
-}
+  });
+};
 
 module.exports = {
-    createPost
-}
+  createPost,
+};
