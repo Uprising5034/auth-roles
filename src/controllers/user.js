@@ -33,7 +33,11 @@ const createUser = async (req, res) => {
 
 const getUsers = async (req, res) => {
 	try {
-		const users = await getUsersDb()
+		const usersRaw = await getUsersDb()
+		const users = usersRaw.map(user => {
+				delete user.passwordHash
+				return user
+			})
 		return res.json({ users })
 	} catch (error) {
 		return res.json({ error: "something went wrong" })
