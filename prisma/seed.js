@@ -32,7 +32,7 @@ async function createUser(username, password, role) {
       posts: {
         create: posts
       },
-			role: role==="ADMIN" ? "ADMIN" : "USER"
+			role: role ? role : "USER"
     },
     include: {
       posts: true
