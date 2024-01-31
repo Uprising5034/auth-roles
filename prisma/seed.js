@@ -9,7 +9,7 @@ async function seed() {
 	// add one admin
 	const user = await createUser("sudoUdo", "sudo", "ADMIN")
 	users.push(user)
-	
+
   while (users.length < 10) {
     const user = await createUser(faker.internet.userName(), '123456789')
     users.push(user)
@@ -18,7 +18,7 @@ async function seed() {
   process.exit(0)
 }
 
-async function createUser(username, password) {
+async function createUser(username, password, role) {
   const posts = []
 
   for (let i = 0; i < username.length; i++) {
@@ -31,7 +31,8 @@ async function createUser(username, password) {
       passwordHash: await bcrypt.hash(password, 6),
       posts: {
         create: posts
-      }
+      },
+			role: role==="ADMIN" ? "ADMIN" : "USER"
     },
     include: {
       posts: true
