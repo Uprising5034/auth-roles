@@ -15,7 +15,6 @@ const verifyToken = (req, res, next) => {
 	try {
 		const verifiedToken = jwt.verify(token, secret)
 
-		const foundUser
 		delete foundUser.password
 
 		req.user = foundUser
