@@ -12,7 +12,7 @@ const {
 const router = express.Router();
 
 router.post("/", createUser);
-router.get("/", getUsers);
-router.get("/", verifyToken, verifyAdminRole, getUser);
+router.get("/", verifyAdminRole, getUsers);
+router.get("/", getUser);
 
 module.exports = router;

@@ -11,10 +11,12 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const { verifyToken } = require('./middleware/authToken')
+
 const userRouter = require('./routers/user');
 app.use('/users', userRouter);
 
 const postRouter = require('./routers/post');
-app.use('/posts', postRouter);
+app.use('/posts', verifyToken, postRouter);
 
 module.exports = app

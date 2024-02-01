@@ -19,7 +19,7 @@ const createUser = async (req, res) => {
 
   try {
     const createdUser = await createUserDb(username, password)
-
+		delete createdUser.passwordHash
     return res.status(201).json({ user: createdUser })
   } catch (e) {
     if (e instanceof PrismaClientKnownRequestError) {

@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
 	const header = req.header("authorization")
 
 	if (!header) {
-		return res.status(400).json( { message: "missing auth token" } )
+		return res.status(400).json( { message: `missing auth token` } )
 	}
 
 	// auth = "Bearer eykahsdjahd…"
