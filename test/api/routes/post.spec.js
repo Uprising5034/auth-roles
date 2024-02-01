@@ -112,8 +112,6 @@ describe("User Endpoint", () => {
             const response = await supertest(app)
                 .delete(`/users/${userToDelete.id}`)
                 .auth(token, {type: 'bearer'})
-                .delete(`/posts/${post.id}`)
-                .auth(token, {type: 'bearer'})
                 .send()
 
             expect(response.status).toEqual(403)
